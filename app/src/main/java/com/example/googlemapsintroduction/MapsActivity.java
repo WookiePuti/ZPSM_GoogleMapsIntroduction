@@ -3,13 +3,13 @@ package com.example.googlemapsintroduction;
 import androidx.fragment.app.FragmentActivity;
 import android.os.Bundle;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.googlemapsintroduction.databinding.ActivityMapsBinding;
+
+// zadanie 1
+// Dokonaj odpowiedniej konfiguracji mapy, aby mapa wskazyła miasto Kraków. Dodaj marker na budynek A0 AGH. Mapa powinna dzialac w trybie hybrydowym z włączonym wyświetlaniem natężenia ruchu
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -42,9 +42,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng cracow = new LatLng(50.060, 19.9377);
+        LatLng aghA0 = new LatLng(50.064452, 19.923566);
+        mMap.addMarker(new MarkerOptions().position(aghA0).title("AGH"));
+        mMap.setTrafficEnabled(true);
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cracow, 13.0f));
+
+        UiSettings uiSettings = mMap.getUiSettings();
+        uiSettings.setZoomControlsEnabled(true);
     }
 }
