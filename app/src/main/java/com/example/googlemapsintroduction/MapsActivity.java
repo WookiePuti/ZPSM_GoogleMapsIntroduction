@@ -1,13 +1,11 @@
 package com.example.googlemapsintroduction;
 
-import androidx.fragment.app.FragmentActivity;
 import android.os.Bundle;
-
+import androidx.fragment.app.FragmentActivity;
+import com.example.googlemapsintroduction.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.LatLng;
-import com.example.googlemapsintroduction.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.DirectionsApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.android.PolyUtil;
@@ -15,14 +13,14 @@ import com.google.maps.errors.ApiException;
 import com.google.maps.model.DirectionsResult;
 import com.google.maps.model.TravelMode;
 
+
 import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 
-// Zadanie 2. Korzystając z Directions API wykonaj zapytanie o trasę z wydziału EAIIB, do Kościoła Mariackiego.
-// Zapytanie powinno obejmować tryb jazdy samochodem. Następnie na podstawie zwróconego obiektu umieść na mapie dwa znaczniki odpowiadające punktowi startowemu oraz końcowemu.
+// Zadanie 3
+// Rozszerz funkcjinalność z zadania 2 o wyświetlanie linii Polyline reprezentujacych zwróconą trasę.
+// Pomocne z tym będzie wyłuskanie odpowiedniego obiektu reprezentujacego encodedPath oraz uzycie metody z klasy PolyUtils
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -32,7 +30,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
